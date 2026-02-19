@@ -280,6 +280,26 @@ class utils {
         $debugmode = (bool)get_config('local_o365', 'debugmode');
         if ($debugmode === true) {
             $backtrace = debug_backtrace();
+            /*
+            if ($message instanceof \Closure) {
+                $message = 'Is closure';
+            }
+            if ($where instanceof \Closure) {
+                $where = "(closure)";
+                $message .= " (\$where is a closure)";
+            }
+            if ($debugdata instanceof \Closure) {
+                $debugdata = "(closure)";
+                $message .= " (\$debugdata is a closure)";
+            }
+            if ($backtrace instanceof \Closure) {
+                $debugdata = "(closure)";
+                $message .= " (\$debugdata is a closure)";
+            }
+            */
+            // $ex = new \Exception();
+            // $backtrace = $ex->getTraceAsString();
+            $backtrace = print_r($backtrace, true);
             $otherdata = [
                 'other' => [
                     'message' => $message,
